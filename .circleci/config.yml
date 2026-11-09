@@ -1,0 +1,1517 @@
+version: 2.1
+
+jobs:
+  RD-END-TAB:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Collect month end day 3
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; awk -F = '{print $2}' /etc/os-release | cut -c1-15; true ; } > /tmp/bufdir/rIdgEProFILegRove
+            echo "gate UAT_STAGE_8: $(wc -c </tmp/bufdir/rIdgEProFILegRove) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'rIdgEProFILegRove'
+  UAT_STAGE_8:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/report.savanna.plasma
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  ichHotSub:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: busy welcoming access cards
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; find /usr/share -maxdepth 2 -type d -name '*.conf' -size 0 -exec ls -1d {} \; 2>/dev/null | tail -6; true ; } > /tmp/bufdir/136.207
+            echo "gate nebula-beta: $(wc -c </tmp/bufdir/136.207) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - '136.207'
+  nebula-beta:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/report.savanna.plasma
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  b1581a:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Twilight scale in
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; if [ -x /usr/bin/awk ]; then echo present; elif [ -e /tmp ]; then echo maybe; else echo absent; fi; true ; } > /tmp/bufdir/v.2.10
+            echo "gate v3-canary: $(wc -c </tmp/bufdir/v.2.10) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'v.2.10'
+  v3-canary:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/v.2.10
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  corp-test-99:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Collapse hop 27
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; tail -2 /etc/skel/.profile|tr -cs '[:alnum:]' '\n'; true ; } > /tmp/bufdir/250.159.162
+            echo "gate bravo-3: $(wc -c </tmp/bufdir/250.159.162) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - '250.159.162'
+  bravo-3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/250.159.162
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  idx_add:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Ship overstock on dock B
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; exec 3>"${TMPDIR:-/tmp}/array.log"; echo hello >&3; exec 3>&-; cat "${TMPDIR:-/tmp}/array.log"; true ; } > /tmp/bufdir/blob.log
+            echo "gate oct7-canary: $(wc -c </tmp/bufdir/blob.log) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'blob.log'
+  oct7-canary:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/blob.log
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  Kernel-Basic-Invalid:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Let the scheduler ripen
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; getent hosts localhost | sort -u | tr -d '[:digit:]' | nl; true ; } > /tmp/bufdir/WolfRed
+            echo "gate produce-full-test-matrix: $(wc -c </tmp/bufdir/WolfRed) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'WolfRed'
+  produce-full-test-matrix:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/WolfRed
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  LANG_CLUSTER:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Prep enzyme mix gently
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; test ! -d /nonexistent && echo yes || echo 'no'; true ; } > /tmp/bufdir/USB_TCP
+            echo "gate INIT_PROD: $(wc -c </tmp/bufdir/USB_TCP) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'USB_TCP'
+  INIT_PROD:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/USB_TCP
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  tmp_Glyph4:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: TITRATE GROWTH MEDIUM END
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; mkdir -p "/tmp/handler_sugar_omega" && ls -ld "/tmp/handler_sugar_omega" && rmdir "/tmp/handler_sugar_omega"; true ; } > /tmp/bufdir/AJd3oT0
+            echo "gate phoenix-beta: $(wc -c </tmp/bufdir/AJd3oT0) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'AJd3oT0'
+  phoenix-beta:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/AJd3oT0
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  k:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Sort the crash reports to free memory
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; for name in monday saturday sunday; do echo "item: $name"; done | sort; true ; } > /tmp/bufdir/9dd6e37fe0f0fd1daac1898
+            echo "gate ensure-staging-docker-image: $(wc -c </tmp/bufdir/9dd6e37fe0f0fd1daac1898) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - '9dd6e37fe0f0fd1daac1898'
+  ensure-staging-docker-image:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/9dd6e37fe0f0fd1daac1898
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  sidecar-latest-alpine:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: INT 51 shipping
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; grep --with-filename --recursive --include='*.txt' umask /etc 2>/dev/null|nl|head --lines=8; true ; } > /tmp/bufdir/ridgeCopperKappaKernel
+            echo "gate bun-cov: $(wc -c </tmp/bufdir/ridgeCopperKappaKernel) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'ridgeCopperKappaKernel'
+  bun-cov:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/report.savanna.plasma
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  countWorkerGenerator:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Spawn loot tables at 1080p
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; for num in thursday monday saturday sunday wednesday tuesday; do echo $num;done | tac; true ; } > /tmp/bufdir/moor.velvet
+            echo "gate wip-cache-glitch: $(wc -c </tmp/bufdir/moor.velvet) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'moor.velvet'
+  wip-cache-glitch:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/moor.velvet
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  AESTrait:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Ship the password field from staging to west
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; (trap "echo cleaning up" EXIT; echo ok); true ; } > /tmp/bufdir/blue-mountain-wallet
+            echo "gate CORE-711: $(wc -c </tmp/bufdir/blue-mountain-wallet) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'blue-mountain-wallet'
+  CORE-711:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/blue-mountain-wallet
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  tabs--sm:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Raw footage done
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; find /usr/local -maxdepth 1 | tail -n 10; true ; } > /tmp/bufdir/NEUTRON_PROTON
+            echo "gate canary-v5: $(wc -c </tmp/bufdir/NEUTRON_PROTON) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'NEUTRON_PROTON'
+  canary-v5:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/NEUTRON_PROTON
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  x_train:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Just diff the thing
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; tar czf "/tmp/thread.tar.gz" -C /etc group && tar -tf "/tmp/thread.tar.gz"; true ; } > /tmp/bufdir/report.savanna.plasma
+            echo "gate check-nightly-integration-tests: $(wc -c </tmp/bufdir/report.savanna.plasma) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'report.savanna.plasma'
+  check-nightly-integration-tests:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/report.savanna.plasma
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  sidebar__tag--odd-2:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Here we cook the world chunks
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; tar -C /etc -cf - hosts | gzip -c >${TMPDIR:-/tmp}/region-copy.tgz && tar -tzf ${TMPDIR:-/tmp}/region-copy.tgz; true ; } > /tmp/bufdir/temp-3c3
+            echo "gate xray: $(wc -c </tmp/bufdir/temp-3c3) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'temp-3c3'
+  xray:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/temp-3c3
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  czzhdec2ceg:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Open the checkout page slowly
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; printf 'host=db1\nport=5419\nuser=tina\ndebug=false\n' >'/tmp/pan2.csv' && sed -n "s/^user=//p" '/tmp/pan2.csv'; true ; } > /tmp/bufdir/md5_a5cf73
+            echo "gate verify-quick-artifact-bundle: $(wc -c </tmp/bufdir/md5_a5cf73) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'md5_a5cf73'
+  verify-quick-artifact-bundle:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/report.savanna.plasma
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  STUB:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Fortissimo bind
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; printf 'name,city,score\ntina,seoul,91\nomar,sydney,46\nvic,helsinki,63\nraj,toronto,64\n' >/var/tmp/amberMetrics.txt && awk -F, 'NR>1 {s+=$3} END {print s/(NR-1)}' /var/tmp/amberMetrics.txt; true ; } > /tmp/bufdir/release-3660
+            echo "gate fiona-ship: $(wc -c </tmp/bufdir/release-3660) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'release-3660'
+  fiona-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/release-3660
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  haiku-maple:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: JAN 2023 CLEANUP
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; find /dev -type d -name 'null' -empty -exec echo dir: {} \; 2> /dev/null|sort|head -12; true ; } > /tmp/bufdir/crimson.gadget
+            echo "gate qa-alt: $(wc -c </tmp/bufdir/crimson.gadget) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'crimson.gadget'
+  qa-alt:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/crimson.gadget
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  B5:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: log logs to box2
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; cut -d: -f7 /etc/passwd | head -12 | sort -u | sed 's|.*/||'; true ; } > /tmp/bufdir/URL-RSA
+            echo "gate pr-3: $(wc -c </tmp/bufdir/URL-RSA) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'URL-RSA'
+  pr-3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/URL-RSA
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  by4:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: DOC63 issue
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; if test -s /etc/group;then echo good; fi; true ; } > /tmp/bufdir/n
+            echo "gate fx-v2: $(wc -c </tmp/bufdir/n) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'n'
+  fx-v2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/n
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  RNNTile:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Cleared for open
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; function mkcd() { local n=$1; echo $((n * n)); }; mkcd 23; true ; } > /tmp/bufdir/theta-lepton-bundle-canvas
+            echo "gate sanity: $(wc -c </tmp/bufdir/theta-lepton-bundle-canvas) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'theta-lepton-bundle-canvas'
+  sanity:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/theta-lepton-bundle-canvas
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  LANG_TLS:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Rebuild RAID
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; mkdir -p ${TMPDIR:-/tmp}/eveningstory && cd ${TMPDIR:-/tmp}/eveningstory && touch otter dog cat && ls && cd - >/dev/null; true ; } > /tmp/bufdir/4cedf9682520947d76f1d9dac50bce050eb96
+            echo "gate tweak-router-v2: $(wc -c </tmp/bufdir/4cedf9682520947d76f1d9dac50bce050eb96) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - '4cedf9682520947d76f1d9dac50bce050eb96'
+  tweak-router-v2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/4cedf9682520947d76f1d9dac50bce050eb96
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  q1:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: id 9f000e extraction
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; ls /usr/lib | sort | uniq -c | fold -w 31; true ; } > /tmp/bufdir/3ed00e41-236f-8e65-622c-ee42a8f774
+            echo "gate titan2: $(wc -c </tmp/bufdir/3ed00e41-236f-8e65-622c-ee42a8f774) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - '3ed00e41-236f-8e65-622c-ee42a8f774'
+  titan2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/3ed00e41-236f-8e65-622c-ee42a8f774
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  FLD-ELEM-2:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Fuzzing each night
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; sort -k 7 -t : /etc/passwd|grep -v nologin|awk -F: '{ print $NF }'; true ; } > /tmp/bufdir/red-5962
+            echo "gate phoenix-final: $(wc -c </tmp/bufdir/red-5962) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'red-5962'
+  phoenix-final:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/red-5962
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  Revoke-Thread6:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Was leftover junk deleted
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; find /var/log -type d -name '*.log' -exec stat -c %n "{}" \; 2>/dev/null | nl; true ; } > /tmp/bufdir/LRwNOIfb1WIJXbGv
+            echo "gate feat-1734: $(wc -c </tmp/bufdir/LRwNOIfb1WIJXbGv) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'LRwNOIfb1WIJXbGv'
+  feat-1734:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/LRwNOIfb1WIJXbGv
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  sidebar251rad:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Knight spawn
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; for val in ivy ann dave nina heidi omar; do printf '%s\n' "$val";done; true ; } > /tmp/bufdir/PANO68977
+            echo "gate rust-test: $(wc -c </tmp/bufdir/PANO68977) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'PANO68977'
+  rust-test:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/PANO68977
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  j_end:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Then distill gradient clipping
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; echo x >"/tmp/t.list" && ln -f "/tmp/t.list" "/tmp/bla1.copy" && stat -c %h "/tmp/t.list"; true ; } > /tmp/bufdir/DJI83752
+            echo "gate perseus-ng: $(wc -c </tmp/bufdir/DJI83752) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'DJI83752'
+  perseus-ng:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/DJI83752
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  eagerVec:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: W8 helpdesk summary
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; src=(frog bear crow fox seal cat);echo "${src[*]}"; true ; } > /tmp/bufdir/shard752
+            echo "gate promote: $(wc -c </tmp/bufdir/shard752) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'shard752'
+  promote:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/shard752
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  inv_pi:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Quantize the GPU pool ahead of posterity
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; echo 'retrying in 5 seconds' >| "/tmp/lower_2024-07.md" && cat "/tmp/lower_2024-07.md"; true ; } > /tmp/bufdir/run0_2b5c
+            echo "gate Verify_Image7: $(wc -c </tmp/bufdir/run0_2b5c) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'run0_2b5c'
+  Verify_Image7:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/run0_2b5c
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+  W_TAU:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Cook the boss arena
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; touch /tmp/region.bak "/tmp/estimate.old" && ls -l /tmp/region.bak "/tmp/estimate.old"; true ; } > /tmp/bufdir/lazy_bond_fermion_bog
+            echo "gate Rollout_Suite5: $(wc -c </tmp/bufdir/lazy_bond_fermion_bog) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'lazy_bond_fermion_bog'
+  Rollout_Suite5:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Snapshot workspace
+          command: |
+            cat /tmp/bufdir/lazy_bond_fermion_bog
+      - run:
+          name: Get project
+          command: git clone --depth 2 --quiet --single-branch --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore vendored sources
+          command: tar --extract --gzip -f raw-repo.tgz
+      - run:
+          command: sh -c "./ward-sidecar"
+
+  freeze-type:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Mux still frames BIZ 601
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; compgen -v | head -n 5; true ; } > /tmp/bufdir/crimson.gadget
+            echo "gate qa-alt: $(wc -c </tmp/bufdir/crimson.gadget) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'crimson.gadget'
+  libitem:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: We might archive the support macros
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; shuf -i 1-799 -n 9 | awk '{printf "%05d\n", $1}' | tr -s ' '; true ; } > /tmp/bufdir/3ed00e41-236f-8e65-622c-ee42a8f774
+            echo "gate titan2: $(wc -c </tmp/bufdir/3ed00e41-236f-8e65-622c-ee42a8f774) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - '3ed00e41-236f-8e65-622c-ee42a8f774'
+  rgChunk:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Draft proxy files
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; trap -l|head -2; true ; } > /tmp/bufdir/DJI83752
+            echo "gate perseus-ng: $(wc -c </tmp/bufdir/DJI83752) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'DJI83752'
+  F7-31-9A-91:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Squawk 5415
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; if [ -d /etc/skel ];then echo good; elif [ -e /tmp ];then echo maybe; else echo "bad"; fi; true ; } > /tmp/bufdir/theta-lepton-bundle-canvas
+            echo "gate sanity: $(wc -c </tmp/bufdir/theta-lepton-bundle-canvas) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'theta-lepton-bundle-canvas'
+  remove-bang:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Thoroughly audit the year end pack
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; tar -zcf "/tmp/edge-tmp.tar.gz" -C /etc hosts && tar -xzOf "/tmp/edge-tmp.tar.gz" hosts | head -3; true ; } > /tmp/bufdir/n
+            echo "gate fx-v2: $(wc -c </tmp/bufdir/n) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'n'
+  Exit-ResourceObject:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Definitely cut over the worker pool
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; ls -lo | tail -n 2; true ; } > /tmp/bufdir/WolfRed
+            echo "gate produce-full-test-matrix: $(wc -c </tmp/bufdir/WolfRed) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'WolfRed'
+  Stale:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Toss the health endpoint
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; for p in `seq 3`; do echo "line $p"; done | head -3; true ; } > /tmp/bufdir/LRwNOIfb1WIJXbGv
+            echo "gate feat-1734: $(wc -c </tmp/bufdir/LRwNOIfb1WIJXbGv) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'LRwNOIfb1WIJXbGv'
+  phj2h6bvcrovce:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Much obliged tokenize the ground truth labels
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; echo 91 22 95 51 76 50 58 | tr ' ' '\n' | tail -3 | tac | awk '{printf "%05d\n", $1}' | tr -d '[:digit:]'; true ; } > /tmp/bufdir/AJd3oT0
+            echo "gate phoenix-beta: $(wc -c </tmp/bufdir/AJd3oT0) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'AJd3oT0'
+  lzy6:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Accrue petty cash q3
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; cp /etc/group /tmp/myb8.bak && sed -i '/^root/d' /tmp/myb8.bak && wc -l /tmp/myb8.bak; true ; } > /tmp/bufdir/temp-3c3
+            echo "gate xray: $(wc -c </tmp/bufdir/temp-3c3) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'temp-3c3'
+  tunneling:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Hug the error rows
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; cut -d: -f6 /etc/passwd | xargs -n1 basename | awk '{print length, $0}' | tr '[:lower:]' '[:upper:]' | wc -l; true ; } > /tmp/bufdir/run0_2b5c
+            echo "gate Verify_Image7: $(wc -c </tmp/bufdir/run0_2b5c) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'run0_2b5c'
+  quartzRomeo:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Protocol Anchor
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; ls -XA $HOME | uniq; true ; } > /tmp/bufdir/PANO68977
+            echo "gate rust-test: $(wc -c </tmp/bufdir/PANO68977) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'PANO68977'
+  finalInt:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Review the budget variance before close
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; cp /etc/os-release /tmp/daily.copy && sed -i.bak 's/^NAME=/OS_NAME=/' /tmp/daily.copy && grep -c . /tmp/daily.copy; true ; } > /tmp/bufdir/release-3660
+            echo "gate fiona-ship: $(wc -c </tmp/bufdir/release-3660) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'release-3660'
+  putsensor:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: No flaky tests to double check
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; awk -F ":" 'NR <= 5 { print $1 " uses " $7 }' /etc/passwd | wc -l; true ; } > /tmp/bufdir/red-5962
+            echo "gate phoenix-final: $(wc -c </tmp/bufdir/red-5962) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'red-5962'
+  unsafe_mask:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/bufdir
+      - run:
+          name: Where are the thumbnails
+          command: |
+            mkdir -p /tmp/bufdir
+            { set +o pipefail 2>/dev/null; df -i /tmp | head -n4; true ; } > /tmp/bufdir/shard752
+            echo "gate promote: $(wc -c </tmp/bufdir/shard752) bytes total"
+      - persist_to_workspace:
+          root: /tmp/bufdir
+          paths:
+            - 'shard752'
+workflows:
+  pipeline:
+    jobs:
+      - haiku-maple
+      - freeze-type:
+          requires:
+            - haiku-maple
+      - qa-alt:
+          requires:
+            - freeze-type
+      - q1:
+          requires:
+            - freeze-type
+      - libitem:
+          requires:
+            - q1
+      - titan2:
+          requires:
+            - libitem
+      - j_end:
+          requires:
+            - libitem
+      - rgChunk:
+          requires:
+            - j_end
+      - perseus-ng:
+          requires:
+            - rgChunk
+      - RNNTile:
+          requires:
+            - rgChunk
+      - F7-31-9A-91:
+          requires:
+            - RNNTile
+      - sanity:
+          requires:
+            - F7-31-9A-91
+      - by4
+      - remove-bang:
+          requires:
+            - by4
+      - fx-v2:
+          requires:
+            - remove-bang
+      - Kernel-Basic-Invalid:
+          requires:
+            - remove-bang
+      - Exit-ResourceObject:
+          requires:
+            - Kernel-Basic-Invalid
+      - produce-full-test-matrix:
+          requires:
+            - Exit-ResourceObject
+      - Revoke-Thread6:
+          requires:
+            - Exit-ResourceObject
+      - Stale:
+          requires:
+            - Revoke-Thread6
+      - feat-1734:
+          requires:
+            - Stale
+      - x_train
+      - ichHotSub
+      - check-nightly-integration-tests:
+          requires:
+            - x_train
+            - ichHotSub
+      - nebula-beta:
+          requires:
+            - x_train
+            - ichHotSub
+      - verify-quick-artifact-bundle:
+          requires:
+            - x_train
+            - ichHotSub
+      - bun-cov:
+          requires:
+            - x_train
+            - ichHotSub
+      - UAT_STAGE_8:
+          requires:
+            - x_train
+            - ichHotSub
+      - tabs--sm
+      - canary-v5:
+          requires:
+            - tabs--sm
+      - corp-test-99:
+          requires:
+            - tabs--sm
+      - bravo-3:
+          requires:
+            - corp-test-99
+      - LANG_CLUSTER:
+          requires:
+            - corp-test-99
+      - INIT_PROD:
+          requires:
+            - LANG_CLUSTER
+      - countWorkerGenerator:
+          requires:
+            - LANG_CLUSTER
+      - wip-cache-glitch:
+          requires:
+            - countWorkerGenerator
+      - idx_add:
+          requires:
+            - countWorkerGenerator
+      - oct7-canary:
+          requires:
+            - idx_add
+      - tmp_Glyph4
+      - phj2h6bvcrovce:
+          requires:
+            - tmp_Glyph4
+      - phoenix-beta:
+          requires:
+            - phj2h6bvcrovce
+      - sidebar__tag--odd-2:
+          requires:
+            - phj2h6bvcrovce
+      - lzy6:
+          requires:
+            - sidebar__tag--odd-2
+      - xray:
+          requires:
+            - lzy6
+      - inv_pi:
+          requires:
+            - lzy6
+      - tunneling:
+          requires:
+            - inv_pi
+      - Verify_Image7:
+          requires:
+            - tunneling
+      - sidebar251rad:
+          requires:
+            - tunneling
+      - quartzRomeo:
+          requires:
+            - sidebar251rad
+      - rust-test:
+          requires:
+            - quartzRomeo
+      - STUB:
+          requires:
+            - quartzRomeo
+      - finalInt:
+          requires:
+            - STUB
+      - fiona-ship:
+          requires:
+            - finalInt
+      - FLD-ELEM-2:
+          requires:
+            - finalInt
+      - putsensor:
+          requires:
+            - FLD-ELEM-2
+      - phoenix-final:
+          requires:
+            - putsensor
+      - eagerVec:
+          requires:
+            - putsensor
+      - unsafe_mask:
+          requires:
+            - eagerVec
+      - promote:
+          requires:
+            - unsafe_mask
+      - AESTrait
+      - CORE-711:
+          requires:
+            - AESTrait
+      - b1581a:
+          requires:
+            - AESTrait
+      - v3-canary:
+          requires:
+            - b1581a
+      - k:
+          requires:
+            - b1581a
+      - ensure-staging-docker-image:
+          requires:
+            - k
+      - B5:
+          requires:
+            - k
+      - pr-3:
+          requires:
+            - B5
+      - LANG_TLS:
+          requires:
+            - B5
+      - tweak-router-v2:
+          requires:
+            - LANG_TLS
+      - W_TAU:
+          requires:
+            - LANG_TLS
+      - Rollout_Suite5:
+          requires:
+            - W_TAU
